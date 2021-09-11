@@ -14,6 +14,22 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <spring.version>5.3.9</spring.version>
+    <servlet.version>4.0.1</servlet.version>
+    <servlet.jsp.version>2.3.3</servlet.jsp.version>
+    <mysql.connector.version>8.0.23</mysql.connector.version>
+    <mybatis.version>3.5.6</mybatis.version>
+    <mybatis.spring.version>2.0.6</mybatis.spring.version>
+    <druid.version>1.2.6</druid.version>
+    <pagehelper.version>5.2.0</pagehelper.version>
+    <jsqlparser.version>4.0</jsqlparser.version>
+    <aspectj.version>1.9.7</aspectj.version>
+    <junit.version>4.13.2</junit.version>
+    <jackson.version>2.12.5</jackson.version>
+    <lombok.version>1.18.20</lombok.version>
+    <log4j.version>1.2.17</log4j.version>
+    <commons.fileupload.version>1.4</commons.fileupload.version>
+    <commons.io>2.11.0</commons.io>
   </properties>
 
   <dependencies>
@@ -21,38 +37,38 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
-      <version>5.3.9</version>
+      <version>${spring.version}</version>
     </dependency>
 
     <!-- spring-web 环境 -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-web</artifactId>
-      <version>5.3.9</version>
+      <version>${spring.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
-      <version>5.3.9</version>
+      <version>${spring.version}</version>
     </dependency>
 
     <!-- jackson-core -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
-      <version>2.12.5</version>
+      <version>${jackson.version}</version>
     </dependency>
     <!-- jackson-databind -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.12.5</version>
+      <version>${jackson.version}</version>
     </dependency>
     <!-- jackson-annotations -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-annotations</artifactId>
-      <version>2.12.5</version>
+      <version>${jackson.version}</version>
     </dependency>
 
 
@@ -60,14 +76,14 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-test</artifactId>
-      <version>5.3.9</version>
+      <version>${spring.version}</version>
       <scope>test</scope>
     </dependency>
     <!-- 单元测试 -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.13.2</version>
+      <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
 
@@ -77,14 +93,14 @@
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
-      <version>4.0.1</version>
+      <version>${servlet.version}</version>
       <scope>provided</scope>
     </dependency>
     <!-- jsp -->
     <dependency>
       <groupId>javax.servlet.jsp</groupId>
       <artifactId>javax.servlet.jsp-api</artifactId>
-      <version>2.3.3</version>
+      <version>${servlet.jsp.version}</version>
       <scope>provided</scope>
     </dependency>
 
@@ -92,52 +108,52 @@
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.23</version>
+      <version>${mysql.connector.version}</version>
     </dependency>
     <!-- mybatis -->
     <dependency>
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis</artifactId>
-      <version>3.5.6</version>
+      <version>${mybatis.version}</version>
     </dependency>
     <!-- mybatis-spring -->
     <dependency>
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis-spring</artifactId>
-      <version>2.0.6</version>
+      <version>${mybatis.spring.version}</version>
     </dependency>
 
     <!-- druid数据库连接池 -->
     <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>druid</artifactId>
-      <version>1.2.6</version>
+      <version>${druid.version}</version>
     </dependency>
     <!-- 分页插件 -->
     <!-- pagehelper -->
     <dependency>
       <groupId>com.github.pagehelper</groupId>
       <artifactId>pagehelper</artifactId>
-      <version>5.2.0</version>
+      <version>${pagehelper.version}</version>
     </dependency>
     <!-- jsqlparser -->
     <dependency>
       <groupId>com.github.jsqlparser</groupId>
       <artifactId>jsqlparser</artifactId>
-      <version>4.0</version>
+      <version>${jsqlparser.version}</version>
     </dependency>
 
     <!-- spring-jdbc    JdbcTemplate -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-jdbc</artifactId>
-      <version>5.3.9</version>
+      <version>${spring.version}</version>
     </dependency>
     <!-- spring-tx 事务控制-->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-tx</artifactId>
-      <version>5.3.9</version>
+      <version>${spring.version}</version>
     </dependency>
 
 
@@ -145,7 +161,7 @@
     <dependency>
       <groupId>org.aspectj</groupId>
       <artifactId>aspectjweaver</artifactId>
-      <version>1.9.7</version>
+      <version>${aspectj.version}</version>
       <scope>runtime</scope>
     </dependency>
 
@@ -154,7 +170,7 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.20</version>
+      <version>${lombok.version}</version>
       <scope>provided</scope>
     </dependency>
 
@@ -162,7 +178,7 @@
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
-      <version>1.2.17</version>
+      <version>${log4j.version}</version>
     </dependency>
 
 
@@ -171,13 +187,13 @@
     <dependency>
       <groupId>commons-fileupload</groupId>
       <artifactId>commons-fileupload</artifactId>
-      <version>1.4</version>
+      <version>${commons.fileupload.version}</version>
     </dependency>
     <!-- commons-io -->
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
-      <version>2.11.0</version>
+      <version>${commons.io}</version>
     </dependency>
 
   </dependencies>

@@ -1,6 +1,6 @@
 package com.feyl.ssm.controller;
 
-import com.feyl.ssm.commonutils.R;
+import com.feyl.ssm.commonutil.R;
 import com.feyl.ssm.entity.User;
 import com.feyl.ssm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

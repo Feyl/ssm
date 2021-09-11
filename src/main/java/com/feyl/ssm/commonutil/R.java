@@ -1,4 +1,4 @@
-package com.feyl.ssm.commonutils;
+package com.feyl.ssm.commonutil;
 
 
 import lombok.Data;

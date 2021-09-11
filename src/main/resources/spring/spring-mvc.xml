@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- Controller的组件扫描
+        自动扫描且只扫描@Controller -->
+    <context:component-scan base-package="com.feyl.ssm.controller" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController"/>
+        <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    </context:component-scan>
+
+
+    <!-- 配置内部资源视图解析器（前后端分离项目这个配置可省略） -->    <!-- 不能与forward:/redirect:一起使用-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- /jsp/success.jsp -->
+        <property name="prefix" value="/WEB-INF/views/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+
+
+    <!-- mvc的注解驱动
+        配置注解驱动后就可以省略处理器映射器和处理器适配器的配置-->
+<!--    <mvc:annotation-driven />-->
+
+    <mvc:annotation-driven conversion-service="conversionService"/>
+    <!-- 声明类型转换器 -->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <!-- 配置自定义类型转换器-->
+                <!--<bean class="com.feyl.ssm.converter.DateConverter"></bean>-->
+            </list>
+        </property>
+    </bean>
+
+
+<!-- 开放资源的访问 -->
+    <!--方式一：-->
+    <mvc:default-servlet-handler/>
+
+<!--
+    &lt;!&ndash;方式二：&ndash;&gt;
+    <mvc:resources mapping="/js/**" location="/static/js/"/>
+    <mvc:resources mapping="/css/**" location="/static/css/"/>
+    <mvc:resources mapping="/img/**" location="/static/img/"/>
+    <mvc:resources mapping="/font/**" location="/static/font/"/>
+-->
+
+    <!-- 配置文件上传解析器 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--  上传文件时文件的临时目录，如果不指定也会基于容器运行目录和项目目录生产一个临时目录 -->
+        <property name="uploadTempDir" value="upload_temp"></property>
+        <!-- 上传内容的默认编码，如果不配置则取系统默认编码 -->
+        <property name="defaultEncoding" value="UTF-8"/>
+        <!-- maxInMemorySize 设置在将上传内容写入磁盘之前允许的最大大小（以字节为单位）默认是10240。
+            超出该设置的大小后上传的文件会被存储到磁盘上uploadTempDir所指定的临时目录中 -->
+        <property name="maxInMemorySize" value="114687"></property>
+        <!-- 设置允许上传的最大容量，默认-1不限制 单位字节，
+            更准确的说该参数是设置multipart类型的请求的单次请求允许提交的最大容量，
+            也包含本次请求中非上传文件的大小。如果整个请求的容量超出了该设置则后抛出
+            org.springframework.web.multipart.MaxUploadSizeExceededException -->
+        <property name="maxUploadSize" value="5242800"/>
+        <!--上传单个文件的大小-->
+        <property name="maxUploadSizePerFile" value="5242800"/>
+    </bean>
+
+
+<!--
+    &lt;!&ndash; 配置拦截器 &ndash;&gt;
+    <mvc:interceptors>
+        <mvc:interceptor>
+            &lt;!&ndash; 配置对哪些资源执行拦截操作 &ndash;&gt;
+            <mvc:mapping path="/**"/>
+            &lt;!&ndash; 配置对哪些资源排除拦截操作 &ndash;&gt;
+            <mvc:exclude-mapping path="/login"/>
+            <bean class="com.feyl.ssm.interceptor.InterceptorDemo"/>
+        </mvc:interceptor>
+&lt;!&ndash;
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.feyl.ssm.interceptor.xxx"/>
+        </mvc:interceptor>
+&ndash;&gt;
+    </mvc:interceptors>
+-->
+
+
+
+<!--
+    &lt;!&ndash; 配置异常处理器 &ndash;&gt;
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+         <property name="defaultErrorView" value="/WEB-INF/views/error"/>  &lt;!&ndash; 默认错误视图 &ndash;&gt;
+        <property name="exceptionMappings">
+            <map>                  &lt;!&ndash;  异常类型                       错误视图   &ndash;&gt;
+                <entry key="java.lang.NullPointerException" value="/WEB-INF/views/nullpointerexceptionerror"/>
+                &lt;!&ndash; 自定义异常 &ndash;&gt;
+                <entry key="com.feyl.ssm.exception.DesignException" value="designexceptionerror"/>
+            </map>
+        </property>
+    </bean>
+-->
+
+<!--
+    &lt;!&ndash; 配置自定义异常处理器信息 &ndash;&gt;
+    <bean class="com.feyl.ssm.resolver.DesignExceptionResolver"/>
+-->
+
+</beans>

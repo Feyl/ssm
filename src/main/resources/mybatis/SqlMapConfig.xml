@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DID Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <!-- 通过properties标签加载外部properties外部文件 -->
+    <properties resource="jdbc.properties"></properties>
+
+    <!-- 自定义别名 -->
+    <typeAliases>
+        <typeAlias type="com.feyl.ssm.entity.User" alias="user"></typeAlias>
+    </typeAliases>
+
+<!--
+    &lt;!&ndash; 注册自定义类型处理器 &ndash;&gt;
+    <typeHandlers>
+        <typeHandler handler="com.feyl.ssm.handler.DateTypeHandler"></typeHandler>
+    </typeHandlers>
+-->
+
+    <!-- 配置分页助手插件 -->
+    <plugins>  <!-- 分页助手的插件配置在mapper之前 -->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+        </plugin>
+    </plugins>
+
+
+    <!-- 数据源的环境 -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 加载映射关系 -->
+    <mappers>
+        <!-- 指定接口所在的包 -->
+        <package name="com.feyl.ssm.mapper"/>
+    </mappers>
+
+</configuration>
